@@ -1,84 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Uwb-eF-HLf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lFk-tO-Jbx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Contacts View Controller - Recent Contacts-->
-        <scene sceneID="3la-eZ-VLJ">
+        <!--Contacts View Controller-->
+        <scene sceneID="0hZ-iH-3IS">
             <objects>
-                <tableViewController id="OS5-Hg-OGO" customClass="NTRContactsViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jKw-Ng-VHk">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="lFk-tO-Jbx" customClass="NTRContactsViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="hzY-ed-m7J">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="S2U-DM-SSs">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S2U-DM-SSs" id="VGc-ui-9HJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Ko8-Cj-rVb" kind="push" id="GHj-aG-xbt"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="backgroundColor" red="0.72941176470588232" green="0.94901960784313721" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JTn-kq-C9u">
+                            <size key="itemSize" width="320" height="568"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
                         <connections>
-                            <outlet property="dataSource" destination="OS5-Hg-OGO" id="z6n-1F-QPO"/>
-                            <outlet property="delegate" destination="OS5-Hg-OGO" id="Iul-Nu-kLg"/>
+                            <outlet property="dataSource" destination="lFk-tO-Jbx" id="rY1-Xb-cYK"/>
+                            <outlet property="delegate" destination="lFk-tO-Jbx" id="U6n-ke-cQp"/>
                         </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Recent Contacts" id="I1s-Ka-b8x"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2t0-FU-vMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tfI-Ws-g4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="474" y="58"/>
-        </scene>
-        <!--Contact Details View Controller - Contact Details-->
-        <scene sceneID="wfw-Jm-6b7">
-            <objects>
-                <tableViewController id="Ko8-Cj-rVb" customClass="NTRContactDetailsViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Eqo-bZ-eIf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Q4m-wE-arV">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q4m-wE-arV" id="fVK-Qs-XL7">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Ko8-Cj-rVb" id="SSV-pG-R14"/>
-                            <outlet property="delegate" destination="Ko8-Cj-rVb" id="hZ3-k2-i0I"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Contact Details" id="Ry9-pa-Cr7"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ACT-6P-yqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="889" y="58"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CRs-rf-1zQ">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="Uwb-eF-HLf" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="abx-Xh-3Xp">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="OS5-Hg-OGO" kind="relationship" relationship="rootViewController" id="kvQ-Uh-PLd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sPr-BA-lJu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-60" y="58"/>
+            <point key="canvasLocation" x="359" y="60"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

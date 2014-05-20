@@ -7,6 +7,9 @@
 //
 
 #import "NTRContactsViewController.h"
+@import AddressBook;
+#import "APAddressBook.h"
+#import "NTRPersonCollectionViewCell.h"
 
 @interface NTRContactsViewController ()
 
@@ -28,31 +31,40 @@
 {
     [super viewDidLoad];
     
+    [self registerCollectionViewCellsFromNib];
 }
 
-#pragma mark - Table view data source
+#pragma mark - CollectionView Data Source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return 10;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class]) forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+    NTRPersonCollectionViewCell *personCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NTRPersonCollectionViewCell class]) forIndexPath:indexPath];
+    return personCell;
+}
+
+#pragma mark - Setting Overrides
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - Private Helper Classes
+
+- (void)registerCollectionViewCellsFromNib
+{
+    NSString *cellIdentifier = NSStringFromClass([NTRPersonCollectionViewCell class]);
+    [self.collectionView registerNib:[UINib nibWithNibName:cellIdentifier bundle:nil] forCellWithReuseIdentifier:cellIdentifier];
 }
 
 @end

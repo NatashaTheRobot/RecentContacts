@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 NatashaTheRobot. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface NTRContactsViewController : UITableViewController
+@interface NTRContactsViewController : UICollectionViewController
 
 @end
