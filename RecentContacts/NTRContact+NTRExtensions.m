@@ -82,20 +82,24 @@
 
 - (NSString *)processImage:(UIImage *)image withExtension:(NSString *)extension existingImagePath:(NSString *)existingImagePath
 {
-    NSData *imageData = UIImagePNGRepresentation(image);
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    NSString *imagePath =[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@.png", self.recordID, extension]];
-    if (existingImagePath) {
-        return existingImagePath;
-    } else {
+    if (image && !existingImagePath) {
+        NSData *imageData = UIImagePNGRepresentation(image);
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        NSString *imagePath =[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@.png", self.recordID, extension]];
         if (![imageData writeToFile:imagePath atomically:NO]) {
             return nil;
         } else {
             return imagePath;
         }
+    }
+    else if (existingImagePath) {
+        return existingImagePath;
+    }
+    else {
+        return nil;
     }
 
 }
