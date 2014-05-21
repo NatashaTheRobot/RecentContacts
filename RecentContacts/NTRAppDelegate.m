@@ -12,6 +12,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // core data setup
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"RecentContacts.sqlite"];
+    
     return YES;
 }
 							

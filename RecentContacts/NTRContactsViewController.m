@@ -8,8 +8,8 @@
 
 #import "NTRContactsViewController.h"
 @import AddressBook;
-#import "APAddressBook.h"
 #import "NTRPersonCollectionViewCell.h"
+#import "NTRContact+NTRExtensions.h"
 
 @interface NTRContactsViewController ()
 
@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
     
+    [NTRContact retrieveFromAddressBook];
     [self registerCollectionViewCellsFromNib];
 }
 
