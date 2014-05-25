@@ -28,7 +28,7 @@
 - (void)setContact:(NTRContact *)contact
 {
     _contact = contact;
-    NSLog(@"%@", contact.firstName);
+    NSLog(@"%@", contact.compositeName);
 }
 
 @end

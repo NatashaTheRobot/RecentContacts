@@ -57,7 +57,7 @@
 
 + (NSArray *)recentContactsFromAddressBook
 {
-    return [NTRContact MR_findAllSortedBy:@"creationDate" ascending:YES];
+    return [NTRContact MR_findAllSortedBy:@"creationDate" ascending:NO];
 }
 
 #pragma mark - Private Helper Methods

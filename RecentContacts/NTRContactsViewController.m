@@ -14,6 +14,7 @@
 @interface NTRContactsViewController ()
 
 @property (strong, nonatomic) NSArray *recentContacts;
+@property (assign, nonatomic) BOOL initialLoad;
 
 @end
 
@@ -25,6 +26,7 @@
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onContactsRetrievalSuccess) name:NTRNotificationContactsSavedSuccess object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onContactsRetrievalFailure:) name:NTRNotificationContactsSavedFailure object:nil];
+        _initialLoad = YES;
     }
     return self;
 }
@@ -39,7 +41,10 @@
 
 - (void)viewDidLayoutSubviews
 {
-    [SVProgressHUD showWithStatus:@"Retrieving Latests Contacts" maskType:SVProgressHUDMaskTypeNone];
+    if(_initialLoad) {
+        [SVProgressHUD showWithStatus:@"Retrieving Latests Contacts" maskType:SVProgressHUDMaskTypeNone];
+        _initialLoad = NO;
+    }
 }
 
 - (void)dealloc
