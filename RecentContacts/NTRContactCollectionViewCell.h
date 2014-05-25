@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 NatashaTheRobot. All rights reserved.
 //
 
-@interface NTRPersonCollectionViewCell : UICollectionViewCell
+@class NTRContact;
+
+@interface NTRContactCollectionViewCell : UICollectionViewCell
+
+@property (strong, nonatomic) NTRContact *contact;
 
 @end

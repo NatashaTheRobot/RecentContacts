@@ -43,12 +43,21 @@
             [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
                 
             } completion:^(BOOL success, NSError *error) {
-                
+                if (success) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NTRNotificationContactsSavedSuccess object:nil];
+                } else {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NTRNotificationContactsSavedFailure object:error];
+                }
             }];
         } else {
-            // HANDLE ERROR
+            [[NSNotificationCenter defaultCenter] postNotificationName:NTRNotificationContactsSavedFailure object:error];
         }
     }];
+}
+
++ (NSArray *)recentContactsFromAddressBook
+{
+    return [NTRContact MR_findAllSortedBy:@"creationDate" ascending:YES];
 }
 
 #pragma mark - Private Helper Methods

@@ -6,22 +6,29 @@
 //  Copyright (c) 2014 NatashaTheRobot. All rights reserved.
 //
 
-#import "NTRPersonCollectionViewCell.h"
+#import "NTRContactCollectionViewCell.h"
 #import "UIImage+ImageEffects.h"
+#import "NTRContact+NTRExtensions.h"
 
-@interface NTRPersonCollectionViewCell ()
+@interface NTRContactCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @end
 
-@implementation NTRPersonCollectionViewCell
+@implementation NTRContactCollectionViewCell
 
 - (void)awakeFromNib
 {
     UIImage *image = [UIImage imageNamed:@"sampleBackground"];
     
     self.backgroundImageView.image = [image applyLightEffect];
+}
+
+- (void)setContact:(NTRContact *)contact
+{
+    _contact = contact;
+    NSLog(@"%@", contact.firstName);
 }
 
 @end

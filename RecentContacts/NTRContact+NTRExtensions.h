@@ -11,5 +11,6 @@
 @interface NTRContact (NTRExtensions)
 
 + (void)retrieveFromAddressBook;
++ (NSArray *)recentContactsFromAddressBook;
 
 @end

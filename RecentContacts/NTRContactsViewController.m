@@ -7,12 +7,13 @@
 //
 
 #import "NTRContactsViewController.h"
-@import AddressBook;
-#import "NTRPersonCollectionViewCell.h"
+#import "NTRContactCollectionViewCell.h"
 #import "NTRContact+NTRExtensions.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface NTRContactsViewController ()
 
+@property (strong, nonatomic) NSArray *recentContacts;
 
 @end
 
@@ -22,7 +23,8 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onContactsRetrievalSuccess) name:NTRNotificationContactsSavedSuccess object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onContactsRetrievalFailure:) name:NTRNotificationContactsSavedFailure object:nil];
     }
     return self;
 }
@@ -35,6 +37,31 @@
     [self registerCollectionViewCellsFromNib];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [SVProgressHUD showWithStatus:@"Retrieving Latests Contacts" maskType:SVProgressHUDMaskTypeNone];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Notifications
+
+- (void)onContactsRetrievalSuccess
+{
+    self.recentContacts = [NTRContact recentContactsFromAddressBook];
+    [SVProgressHUD dismiss];
+    [self.collectionView reloadData];
+}
+
+- (void)onContactsRetrievalFailure:(NSError *)error
+{
+    [SVProgressHUD dismiss];
+    // TODO: HANDLE ERROR
+}
+
 #pragma mark - CollectionView Data Source
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -44,13 +71,14 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return [self.recentContacts count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NTRPersonCollectionViewCell *personCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NTRPersonCollectionViewCell class]) forIndexPath:indexPath];
-    return personCell;
+    NTRContactCollectionViewCell *contactCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NTRContactCollectionViewCell class]) forIndexPath:indexPath];
+    contactCell.contact = self.recentContacts[indexPath.row];
+    return contactCell;
 }
 
 #pragma mark - Setting Overrides
@@ -64,7 +92,7 @@
 
 - (void)registerCollectionViewCellsFromNib
 {
-    NSString *cellIdentifier = NSStringFromClass([NTRPersonCollectionViewCell class]);
+    NSString *cellIdentifier = NSStringFromClass([NTRContactCollectionViewCell class]);
     [self.collectionView registerNib:[UINib nibWithNibName:cellIdentifier bundle:nil] forCellWithReuseIdentifier:cellIdentifier];
 }
 
