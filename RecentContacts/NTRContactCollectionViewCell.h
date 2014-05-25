@@ -11,5 +11,6 @@
 @interface NTRContactCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) NTRContact *contact;
+@property (assign, nonatomic) NSInteger index;
 
 @end

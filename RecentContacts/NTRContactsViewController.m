@@ -82,7 +82,10 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NTRContactCollectionViewCell *contactCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NTRContactCollectionViewCell class]) forIndexPath:indexPath];
+    
     contactCell.contact = self.recentContacts[indexPath.row];
+    contactCell.index = indexPath.row;
+    
     return contactCell;
 }
 

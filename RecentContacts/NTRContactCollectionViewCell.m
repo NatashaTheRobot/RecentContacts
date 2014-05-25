@@ -20,8 +20,21 @@
 
 - (void)awakeFromNib
 {
-    UIImage *image = [UIImage imageNamed:@"sampleBackground"];
+
+}
+
+#pragma mark - Setter Overrides
+
+- (void)setIndex:(NSInteger)index
+{
+    _index = index;
     
+    UIImage *image;
+    if (index % 2) {
+        image = [UIImage imageNamed:@"sampleImageUpsideDown"];
+    } else {
+        image = [UIImage imageNamed:@"sampleBackground"];
+    }
     self.backgroundImageView.image = [image applyLightEffect];
 }
 
