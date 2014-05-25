@@ -13,14 +13,16 @@
 @interface NTRContactCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *contactImageView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation NTRContactCollectionViewCell
 
-- (void)awakeFromNib
+- (void)prepareForReuse
 {
-
+    self.contactImageView.image = nil;
 }
 
 #pragma mark - Setter Overrides
@@ -29,19 +31,20 @@
 {
     _index = index;
     
-    UIImage *image;
-    if (index % 2) {
-        image = [UIImage imageNamed:@"sampleImageUpsideDown"];
-    } else {
-        image = [UIImage imageNamed:@"sampleBackground"];
-    }
-    self.backgroundImageView.image = [image applyLightEffect];
+    NSString *backgroundImageName = index % 2 ? @"sampleImageUpsideDown" : @"sampleBackground";
+    UIImage *backgroundImage = [UIImage imageNamed:backgroundImageName];
+    
+    self.backgroundImageView.image = [backgroundImage applyLightEffect];
 }
 
 - (void)setContact:(NTRContact *)contact
 {
     _contact = contact;
-    NSLog(@"%@", contact.compositeName);
+    if (contact.thumbnailPath) {
+        self.contactImageView.image = [UIImage imageWithContentsOfFile:contact.thumbnailPath];
+        self.contactImageView.layer.cornerRadius = self.contactImageView.frame.size.width / 2;
+        self.contactImageView.layer.masksToBounds = YES;
+    }
 }
 
 @end
