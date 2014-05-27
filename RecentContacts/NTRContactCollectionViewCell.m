@@ -12,6 +12,7 @@
 #import "NTRContactPhoneTableViewCell.h"
 #import "NTRContactEmailTableViewCell.h"
 #import "NTRContactNameTableViewCell.h"
+#import "NSSet+NTRExtensions.h"
 
 @interface NTRContactCollectionViewCell () <UITableViewDelegate, UITableViewDataSource>
 
@@ -30,6 +31,9 @@
 - (void)prepareForReuse
 {
     self.contactImageView.image = nil;
+    self.sectionIndexForEmails = nil;
+    self.sectionIndexForPhones = nil;
+    self.sectionIndexForName = nil;
 }
 
 - (void)awakeFromNib
@@ -72,12 +76,12 @@
         numberOfSections ++;
     }
     
-    if(self.contact.phones && [self.contact.phones count] > 0) {
+    if(![self.contact.phones isEmpty]) {
         self.sectionIndexForPhones = [NSNumber numberWithInteger:numberOfSections];
         numberOfSections++;
     }
     
-    if(self.contact.emails && [self.contact.emails count] > 0) {
+    if(![self.contact.emails isEmpty]) {
         self.sectionIndexForEmails = [NSNumber numberWithInteger:numberOfSections];
         numberOfSections++;
     }

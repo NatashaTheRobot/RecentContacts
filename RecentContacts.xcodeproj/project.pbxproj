@@ -30,6 +30,7 @@
 		FA329C211933A92A00B2687D /* NTRContactEmailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA329C1F1933A92A00B2687D /* NTRContactEmailTableViewCell.xib */; };
 		FA329C291933A98500B2687D /* NTRContactNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA329C271933A98500B2687D /* NTRContactNameTableViewCell.m */; };
 		FA329C2A1933A98500B2687D /* NTRContactNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA329C281933A98500B2687D /* NTRContactNameTableViewCell.xib */; };
+		FA697C02193504F1007B7B0B /* NSSet+NTRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA697C01193504F1007B7B0B /* NSSet+NTRExtensions.m */; };
 		FA87B928192A39CD000D9156 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA87B927192A39CD000D9156 /* Foundation.framework */; };
 		FA87B92A192A39CD000D9156 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA87B929192A39CD000D9156 /* CoreGraphics.framework */; };
 		FA87B92C192A39CD000D9156 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA87B92B192A39CD000D9156 /* UIKit.framework */; };
@@ -99,6 +100,8 @@
 		FA329C261933A98500B2687D /* NTRContactNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTRContactNameTableViewCell.h; sourceTree = "<group>"; };
 		FA329C271933A98500B2687D /* NTRContactNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTRContactNameTableViewCell.m; sourceTree = "<group>"; };
 		FA329C281933A98500B2687D /* NTRContactNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTRContactNameTableViewCell.xib; sourceTree = "<group>"; };
+		FA697C00193504F1007B7B0B /* NSSet+NTRExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+NTRExtensions.h"; sourceTree = "<group>"; };
+		FA697C01193504F1007B7B0B /* NSSet+NTRExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+NTRExtensions.m"; sourceTree = "<group>"; };
 		FA87B924192A39CD000D9156 /* RecentContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecentContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA87B927192A39CD000D9156 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA87B929192A39CD000D9156 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -190,6 +193,8 @@
 			children = (
 				FA329BF0192B9E5200B2687D /* UIImage+ImageEffects.h */,
 				FA329BF1192B9E5200B2687D /* UIImage+ImageEffects.m */,
+				FA697C00193504F1007B7B0B /* NSSet+NTRExtensions.h */,
+				FA697C01193504F1007B7B0B /* NSSet+NTRExtensions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -483,6 +488,7 @@
 				FA329C291933A98500B2687D /* NTRContactNameTableViewCell.m in Sources */,
 				FA329C0B192CE9E400B2687D /* NTREmail.m in Sources */,
 				FA87B934192A39CD000D9156 /* main.m in Sources */,
+				FA697C02193504F1007B7B0B /* NSSet+NTRExtensions.m in Sources */,
 				FA87B938192A39CD000D9156 /* NTRAppDelegate.m in Sources */,
 				FA329C08192CE9E400B2687D /* NTRPhone.m in Sources */,
 				FA329C05192CE9E400B2687D /* NTRContact.m in Sources */,
