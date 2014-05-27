@@ -13,12 +13,13 @@
 #import "NTRContactEmailTableViewCell.h"
 #import "NTRContactNameTableViewCell.h"
 #import "NSSet+NTRExtensions.h"
+#import "NSString+NTRExtensions.h"
 
 @interface NTRContactCollectionViewCell () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *contactImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *profileView;
 
 @property (strong, nonatomic) NSNumber *sectionIndexForName;
 @property (strong, nonatomic) NSNumber *sectionIndexForPhones;
@@ -30,7 +31,9 @@
 
 - (void)prepareForReuse
 {
-    self.contactImageView.image = nil;
+    [self.profileView.subviews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+        [view removeFromSuperview];
+    }];
     self.sectionIndexForEmails = nil;
     self.sectionIndexForPhones = nil;
     self.sectionIndexForName = nil;
@@ -38,6 +41,8 @@
 
 - (void)awakeFromNib
 {
+    self.profileView.layer.cornerRadius = self.profileView.frame.size.width / 2;
+    self.profileView.layer.masksToBounds = YES;
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self registerTableViewViewCellsFromNib];
 }
@@ -58,9 +63,21 @@
 {
     _contact = contact;
     if (contact.thumbnailPath) {
-        self.contactImageView.image = [UIImage imageWithContentsOfFile:contact.thumbnailPath];
-        self.contactImageView.layer.cornerRadius = self.contactImageView.frame.size.width / 2;
-        self.contactImageView.layer.masksToBounds = YES;
+        
+        UIImageView *contactImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.profileView.frame.size.width, self.profileView.frame.size.height)];
+        contactImageView.image = [UIImage imageWithContentsOfFile:contact.thumbnailPath];
+        
+        [self.profileView addSubview:contactImageView];
+    } else {
+        self.profileView.backgroundColor = [UIColor purpleColor];
+        
+        // creating label
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.profileView.frame.size.width, self.profileView.frame.size.height)];
+        label.text = [contact.compositeName initialsString];
+        label.textColor = [UIColor whiteColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        
+        [self.profileView addSubview:label];
     }
     [self.tableView reloadData];
 }
