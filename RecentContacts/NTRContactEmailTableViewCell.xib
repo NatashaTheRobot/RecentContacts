@@ -6,22 +6,50 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="gFT-ZP-S07" style="IBUITableViewCellStyleDefault" id="KGk-i7-Jjw" customClass="NTRContactEmailTableViewCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="NTRContactEmailTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gFT-ZP-S07">
-                        <rect key="frame" x="15" y="0.0" width="290" height="43"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhx-JN-rrv" userLabel="Email Label">
+                        <rect key="frame" x="0.0" y="11" width="272" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCX-xY-uRB" userLabel="Email Button">
+                        <rect key="frame" x="286" y="0.0" width="40" height="43"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="sjA-fh-hWL"/>
+                        </constraints>
+                        <state key="normal" image="iconEmail">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="onEmailButtonTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Q2x-IV-PVZ"/>
+                        </connections>
+                    </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="jhx-JN-rrv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Euv-sK-rMq"/>
+                    <constraint firstItem="kCX-xY-uRB" firstAttribute="leading" secondItem="jhx-JN-rrv" secondAttribute="trailing" constant="14" id="F5y-no-zfa"/>
+                    <constraint firstItem="jhx-JN-rrv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="HTq-4C-lFR"/>
+                    <constraint firstAttribute="bottom" secondItem="kCX-xY-uRB" secondAttribute="bottom" id="WIV-j6-Pr2"/>
+                    <constraint firstAttribute="trailing" secondItem="kCX-xY-uRB" secondAttribute="trailing" constant="-6" id="uHf-dh-1bZ"/>
+                    <constraint firstItem="kCX-xY-uRB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vTB-Vw-zPo"/>
+                </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="emailLabel" destination="jhx-JN-rrv" id="0oW-fk-kUE"/>
+            </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="iconEmail" width="25" height="25"/>
+    </resources>
 </document>

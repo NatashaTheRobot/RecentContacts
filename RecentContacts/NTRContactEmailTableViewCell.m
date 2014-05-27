@@ -9,6 +9,13 @@
 #import "NTRContactEmailTableViewCell.h"
 #import "NTREmail+NTRExtensions.h"
 
+@interface NTRContactEmailTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+
+
+@end
+
 @implementation NTRContactEmailTableViewCell
 
 - (void)awakeFromNib
@@ -18,7 +25,15 @@
 
 - (void)configureWithEmail:(NTREmail *)email
 {
-    self.textLabel.text = email.address;
+    self.emailLabel.text = email.address;
 }
+
+#pragma mark - Actions
+
+- (IBAction)onEmailButtonTap:(id)sender
+{
+    
+}
+
 
 @end
