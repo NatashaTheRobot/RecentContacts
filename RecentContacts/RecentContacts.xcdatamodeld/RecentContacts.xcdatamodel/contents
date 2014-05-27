@@ -7,7 +7,6 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modificationDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="photoPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recordID" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="thumbnailPath" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="emails" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NTREmail" inverseName="contact" inverseEntity="NTREmail" syncable="YES"/>
@@ -23,8 +22,8 @@
         <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NTRContact" inverseName="phones" inverseEntity="NTRContact" syncable="YES"/>
     </entity>
     <elements>
-        <element name="NTRContact" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="NTREmail" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="NTRPhone" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="NTRContact" positionX="0" positionY="0" width="128" height="195"/>
+        <element name="NTREmail" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="NTRPhone" positionX="0" positionY="0" width="128" height="90"/>
     </elements>
 </model>

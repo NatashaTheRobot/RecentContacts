@@ -17,7 +17,16 @@
 + (void)retrieveFromAddressBook
 {
     APAddressBook *addressBook = [[APAddressBook alloc] init];
-    addressBook.fieldsMask = APContactFieldAll;
+    addressBook.fieldsMask =    APContactFieldFirstName |
+                                APContactFieldLastName |
+                                APContactFieldCompany |
+                                APContactFieldEmails |
+                                APContactFieldThumbnail |
+                                APContactFieldPhonesWithLabels |
+                                APContactFieldCompositeName |
+                                APContactFieldRecordID |
+                                APContactFieldCreationDate |
+                                APContactFieldModificationDate;
     
     [addressBook loadContacts:^(NSArray *contacts, NSError *error) {
         if (contacts) {
@@ -27,9 +36,11 @@
                 // creation date should never change for an existing contact!
                 if (existingContact)
                 {
-                    [existingContact clearExistingEmails];
-                    [existingContact clearExistingPhones];
-                    [existingContact populateDataFromContact:contact];
+                    if (![existingContact.modificationDate isEqualToDate:contact.modificationDate]) {
+                        [existingContact clearExistingEmails];
+                        [existingContact clearExistingPhones];
+                        [existingContact populateDataFromContact:contact];
+                    }
                 }
                 else
                 {
@@ -43,7 +54,7 @@
             [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
                 
             } completion:^(BOOL success, NSError *error) {
-                if (success) {
+                if (success || !error) {
                     [[NSNotificationCenter defaultCenter] postNotificationName:NTRNotificationContactsSavedSuccess object:nil];
                 } else {
                     [[NSNotificationCenter defaultCenter] postNotificationName:NTRNotificationContactsSavedFailure object:error];
@@ -85,7 +96,6 @@
     self.modificationDate = contact.modificationDate;
     [self addEmails:[NTREmail emailsFromEmailsArray:contact.emails]];
     [self addPhones:[NTRPhone phonesFromPhonesArray:contact.phonesWithLabels]];
-    self.photoPath = [self processImage:contact.photo withExtension:@"photo" existingImagePath:self.photoPath];
     self.thumbnailPath = [self processImage:contact.thumbnail withExtension:@"thumbnail" existingImagePath:self.thumbnailPath];
 }
 
