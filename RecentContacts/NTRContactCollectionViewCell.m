@@ -67,7 +67,7 @@
         
         UILabel *loadingLabel = [[UILabel alloc] initWithFrame:self.shimmeringView.bounds];
         loadingLabel.textAlignment = NSTextAlignmentCenter;
-        loadingLabel.text = @">";
+        loadingLabel.text = @"▷";
         loadingLabel.font = [UIFont systemFontOfSize:30.0f];
         loadingLabel.textColor = [UIColor whiteColor];
         self.shimmeringView.contentView = loadingLabel;
