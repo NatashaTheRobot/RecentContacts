@@ -19,6 +19,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *contactImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) NSNumber *sectionIndexForName;
+@property (strong, nonatomic) NSNumber *sectionIndexForPhones;
+@property (strong, nonatomic) NSNumber *sectionIndexForEmails;
+
 @end
 
 @implementation NTRContactCollectionViewCell
@@ -61,37 +65,68 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    NSInteger numberOfSections = 0;
+    
+    if(self.contact.compositeName) {
+        self.sectionIndexForName = [NSNumber numberWithInteger:numberOfSections];
+        numberOfSections ++;
+    }
+    
+    if(self.contact.phones && [self.contact.phones count] > 0) {
+        self.sectionIndexForPhones = [NSNumber numberWithInteger:numberOfSections];
+        numberOfSections++;
+    }
+    
+    if(self.contact.emails && [self.contact.emails count] > 0) {
+        self.sectionIndexForEmails = [NSNumber numberWithInteger:numberOfSections];
+        numberOfSections++;
+    }
+    
+    return numberOfSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows = 0;
     
-    if(self.contact.compositeName) {
-        numberOfRows ++;
+    if(self.sectionIndexForName && section == [self.sectionIndexForName integerValue]) {
+        return 1;
     }
     
-    if(self.contact.emails) {
-        numberOfRows += [self.contact.emails count];
+    if(self.sectionIndexForPhones && section == [self.sectionIndexForPhones integerValue]) {
+        return [self.contact.phones count];
     }
     
-    if(self.contact.phones) {
-        numberOfRows += [self.contact.phones count];
+    if(self.sectionIndexForEmails && section == [self.sectionIndexForEmails integerValue]) {
+        return [self.contact.emails count];
     }
     
-    return numberOfRows;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NTRContactNameTableViewCell *nameCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NTRContactNameTableViewCell class])];
-    
-    if(self.contact.compositeName) {
+    UITableViewCell *cell;
+    if(self.sectionIndexForName && indexPath.section == [self.sectionIndexForName integerValue]) {
+        NTRContactNameTableViewCell *nameCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NTRContactNameTableViewCell class])];
         nameCell.textLabel.text = self.contact.compositeName;
+        cell = nameCell;
     }
     
-    return nameCell;
+    if(self.sectionIndexForPhones && indexPath.section == [self.sectionIndexForPhones integerValue]) {
+        NTRContactPhoneTableViewCell *phoneCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NTRContactPhoneTableViewCell class])];
+//        phoneCell.textLabel.text = [self.contact.phones allObjects][indexPath.row];
+        phoneCell.textLabel.text = @"202-412-4678";
+        cell = phoneCell;
+    }
+    
+    if(self.sectionIndexForEmails && indexPath.section == [self.sectionIndexForEmails integerValue]) {
+        NTRContactEmailTableViewCell *emailCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NTRContactEmailTableViewCell class])];
+//        emailCell.textLabel.text = [self.contact.emails allObjects][indexPath.row];
+        emailCell.textLabel.text = @"natasha@natashatherobot.com";
+        cell = emailCell;
+    }
+    
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView  willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
