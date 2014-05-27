@@ -9,17 +9,30 @@
 #import "NTRContactPhoneTableViewCell.h"
 #import "NTRPhone+NTRExtensions.h"
 
-@implementation NTRContactPhoneTableViewCell
+@interface NTRContactPhoneTableViewCell ()
 
-- (void)awakeFromNib
-{
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"call"]];
-}
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+
+
+@end
+
+@implementation NTRContactPhoneTableViewCell
 
 - (void)configureWithPhone:(NTRPhone *)phone
 {
-    self.textLabel.text = phone.phoneNumber;
+    self.phoneLabel.text = phone.phoneNumber;
+}
+
+#pragma mark - Actions
+
+- (IBAction)onTextButtonTap:(id)sender
+{
+    
+}
+
+- (IBAction)onCallButtonTap:(id)sender
+{
+    
 }
 
 @end

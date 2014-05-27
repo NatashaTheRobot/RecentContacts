@@ -6,23 +6,77 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NTRContactPhoneTableViewCell" textLabel="WwY-WO-I6G" style="IBUITableViewCellStyleDefault" id="KGk-i7-Jjw" customClass="NTRContactPhoneTableViewCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NTRContactPhoneTableViewCell" id="KGk-i7-Jjw" customClass="NTRContactPhoneTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WwY-WO-I6G">
-                        <rect key="frame" x="15" y="0.0" width="290" height="43"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bh-39-Aaw" userLabel="Phone Label">
+                        <rect key="frame" x="0.0" y="11" width="248" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PPf-fo-vkF" userLabel="Actions View">
+                        <rect key="frame" x="250" y="0.0" width="70" height="43"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAP-U7-dMR" userLabel="Text">
+                                <rect key="frame" x="45" y="0.0" width="25" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="iconChatBubble">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTextButtonTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tx5-Uk-KSw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ayo-BT-DBd" userLabel="Call">
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="iconEmail">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCallButtonTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="o4Y-fZ-n2M"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BAP-U7-dMR" firstAttribute="top" secondItem="PPf-fo-vkF" secondAttribute="top" id="AEu-VM-8vX"/>
+                            <constraint firstAttribute="bottom" secondItem="BAP-U7-dMR" secondAttribute="bottom" id="EZP-Jb-QTe"/>
+                            <constraint firstItem="BAP-U7-dMR" firstAttribute="height" secondItem="Ayo-BT-DBd" secondAttribute="height" id="K3u-0K-YYY"/>
+                            <constraint firstItem="BAP-U7-dMR" firstAttribute="width" secondItem="Ayo-BT-DBd" secondAttribute="width" id="KMB-8I-yFu"/>
+                            <constraint firstItem="BAP-U7-dMR" firstAttribute="baseline" secondItem="Ayo-BT-DBd" secondAttribute="baseline" id="Qcy-rc-edt"/>
+                            <constraint firstItem="Ayo-BT-DBd" firstAttribute="leading" secondItem="PPf-fo-vkF" secondAttribute="leading" id="WWT-Ej-49u"/>
+                            <constraint firstItem="Ayo-BT-DBd" firstAttribute="top" secondItem="PPf-fo-vkF" secondAttribute="top" id="i4v-ce-GCf"/>
+                            <constraint firstAttribute="trailing" secondItem="BAP-U7-dMR" secondAttribute="trailing" id="oTE-ey-nOs"/>
+                            <constraint firstAttribute="width" constant="70" id="sX9-p5-UCn"/>
+                        </constraints>
+                    </view>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="PPf-fo-vkF" firstAttribute="centerY" secondItem="7bh-39-Aaw" secondAttribute="centerY" id="6CI-Lf-htr"/>
+                    <constraint firstItem="7bh-39-Aaw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="AEg-tj-idp"/>
+                    <constraint firstItem="7bh-39-Aaw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QBj-o7-fUz"/>
+                    <constraint firstItem="PPf-fo-vkF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TgZ-5C-Wpm"/>
+                    <constraint firstAttribute="trailing" secondItem="PPf-fo-vkF" secondAttribute="trailing" id="lGY-k7-ky4"/>
+                    <constraint firstItem="PPf-fo-vkF" firstAttribute="leading" secondItem="7bh-39-Aaw" secondAttribute="trailing" constant="2" id="uSu-Jh-dHg"/>
+                    <constraint firstAttribute="bottom" secondItem="PPf-fo-vkF" secondAttribute="bottom" id="x7V-lw-B7j"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="phoneLabel" destination="7bh-39-Aaw" id="et5-IG-x9U"/>
+            </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="iconChatBubble" width="25" height="25"/>
+        <image name="iconEmail" width="25" height="25"/>
+    </resources>
 </document>
