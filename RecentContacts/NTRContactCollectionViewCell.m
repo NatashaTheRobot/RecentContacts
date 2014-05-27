@@ -114,15 +114,13 @@
     
     if(self.sectionIndexForPhones && indexPath.section == [self.sectionIndexForPhones integerValue]) {
         NTRContactPhoneTableViewCell *phoneCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NTRContactPhoneTableViewCell class])];
-//        phoneCell.textLabel.text = [self.contact.phones allObjects][indexPath.row];
-        phoneCell.textLabel.text = @"202-412-4678";
+        [phoneCell configureWithPhone:([self.contact.phones allObjects][indexPath.row])];
         cell = phoneCell;
     }
     
     if(self.sectionIndexForEmails && indexPath.section == [self.sectionIndexForEmails integerValue]) {
         NTRContactEmailTableViewCell *emailCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NTRContactEmailTableViewCell class])];
-//        emailCell.textLabel.text = [self.contact.emails allObjects][indexPath.row];
-        emailCell.textLabel.text = @"natasha@natashatherobot.com";
+        [emailCell configureWithEmail:([self.contact.emails allObjects][indexPath.row])];
         cell = emailCell;
     }
     

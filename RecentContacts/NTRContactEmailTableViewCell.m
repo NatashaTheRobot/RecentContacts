@@ -7,6 +7,7 @@
 //
 
 #import "NTRContactEmailTableViewCell.h"
+#import "NTREmail+NTRExtensions.h"
 
 @implementation NTRContactEmailTableViewCell
 
@@ -15,11 +16,9 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void)configureWithEmail:(NTREmail *)email
 {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    self.textLabel.text = email.address;
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "NTRContactPhoneTableViewCell.h"
+#import "NTRPhone+NTRExtensions.h"
 
 @implementation NTRContactPhoneTableViewCell
 
@@ -14,6 +15,11 @@
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"call"]];
+}
+
+- (void)configureWithPhone:(NTRPhone *)phone
+{
+    self.textLabel.text = phone.phoneNumber;
 }
 
 @end

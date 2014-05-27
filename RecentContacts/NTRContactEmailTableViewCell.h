@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 NatashaTheRobot. All rights reserved.
 //
 
+@class NTREmail;
+
 @interface NTRContactEmailTableViewCell : UITableViewCell
+
+- (void)configureWithEmail:(NTREmail *)email;
 
 @end
