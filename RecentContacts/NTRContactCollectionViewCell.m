@@ -14,12 +14,14 @@
 #import "NTRContactNameTableViewCell.h"
 #import "NSSet+NTRExtensions.h"
 #import "NSString+NTRExtensions.h"
+#import <Shimmer/FBShimmeringView.h>
 
 @interface NTRContactCollectionViewCell () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *profileView;
+@property (strong, nonatomic) FBShimmeringView *shimmeringView;
 
 @property (strong, nonatomic) NSNumber *sectionIndexForName;
 @property (strong, nonatomic) NSNumber *sectionIndexForPhones;
@@ -37,6 +39,7 @@
     self.sectionIndexForEmails = nil;
     self.sectionIndexForPhones = nil;
     self.sectionIndexForName = nil;
+    [self.shimmeringView removeFromSuperview];
 }
 
 - (void)awakeFromNib
@@ -57,6 +60,22 @@
     UIImage *backgroundImage = [UIImage imageNamed:backgroundImageName];
     
     self.backgroundImageView.image = [backgroundImage applyLightEffect];
+    
+    if (index == 0) {
+        self.shimmeringView = [[FBShimmeringView alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 50, self.frame.size.width, 50)];
+        [self addSubview:self.shimmeringView];
+        
+        UILabel *loadingLabel = [[UILabel alloc] initWithFrame:self.shimmeringView.bounds];
+        loadingLabel.textAlignment = NSTextAlignmentCenter;
+        loadingLabel.text = @">";
+        loadingLabel.font = [UIFont systemFontOfSize:30.0f];
+        loadingLabel.textColor = [UIColor whiteColor];
+        self.shimmeringView.contentView = loadingLabel;
+        
+        self.shimmeringView.transform = CGAffineTransformMakeRotation(M_PI/2);
+        // Start shimmering.
+        self.shimmeringView.shimmering = YES;
+    }
 }
 
 - (void)setContact:(NTRContact *)contact
