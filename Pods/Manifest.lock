@@ -5,17 +5,20 @@ PODS:
   - MagicalRecord/Core (2.2)
   - Shimmer (1.0.1)
   - SVProgressHUD (1.0)
+  - TGLStackedViewController (1.0.1)
 
 DEPENDENCIES:
   - APAddressBook (= 0.0.8)
   - MagicalRecord (= 2.2)
   - Shimmer (= 1.0.1)
   - SVProgressHUD (= 1.0)
+  - TGLStackedViewController (= 1.0.1)
 
 SPEC CHECKSUMS:
   APAddressBook: 2bf23f7f2fdcd9d46d74fbcd478d334c763cbee2
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   Shimmer: 35aa2a57b8fbc17f9e16706021665966fd93dbd1
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
+  TGLStackedViewController: 856fbc83b73ec0c0487e7febfc9ddad349a56660
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1

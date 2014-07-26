@@ -36,3 +36,9 @@
 #define COCOAPODS_VERSION_MINOR_Shimmer 0
 #define COCOAPODS_VERSION_PATCH_Shimmer 1
 
+// TGLStackedViewController
+#define COCOAPODS_POD_AVAILABLE_TGLStackedViewController
+#define COCOAPODS_VERSION_MAJOR_TGLStackedViewController 1
+#define COCOAPODS_VERSION_MINOR_TGLStackedViewController 0
+#define COCOAPODS_VERSION_PATCH_TGLStackedViewController 1
+
